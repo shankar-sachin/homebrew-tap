@@ -15,7 +15,7 @@ class Askphysics < Formula
     # dependencies into a private virtualenv under libexec.
     ENV["UV_CACHE_DIR"] = buildpath/".uv-cache"
     ENV["UV_PYTHON_DOWNLOADS"] = "never"
-    python = Formula["python@3.12"].opt_bin/"python3.12"
+    python = formula_opt_bin("python@3.12")/"python3.12"
     system "uv", "venv", libexec, "--python", python
     # On Linux, pyproject.toml points uv at PyTorch's CPU-only wheels.
     system "uv", "pip", "install", "--python", libexec/"bin/python", buildpath
