@@ -1,9 +1,8 @@
 class Askphysics < Formula
   desc "Answers physics questions with our own small language models and real math"
   homepage "https://github.com/shankar-sachin/ask-physics"
-  url "https://github.com/shankar-sachin/ask-physics/archive/7f0f73cb1a42431f8235a5877b5ac9d2b6b8ec30.tar.gz"
-  version "0.2.0"
-  sha256 "25c381cc9104b6cb77731921388a2dbd0a49ee0ec586a9ece4c54b1e7f1f4675"
+  url "https://github.com/shankar-sachin/ask-physics/archive/refs/tags/v0.2.0.tar.gz"
+  sha256 "81e4c58769bf5e81e487e5e1dd35ed8f04851d63bc2cf0e5874eeff6322ec040"
   license "MIT"
   head "https://github.com/shankar-sachin/ask-physics.git", branch: "main"
 
