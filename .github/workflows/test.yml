@@ -1,0 +1,32 @@
+name: Test formula
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  brew:
+    name: brew install (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [macos-latest, ubuntu-latest]
+    steps:
+      - uses: Homebrew/actions/setup-homebrew@master
+      - uses: actions/checkout@v4
+      - name: Tap this checkout
+        run: |
+          tap="$(brew --repository)/Library/Taps/shankar-sachin/homebrew-tap"
+          mkdir -p "$(dirname "$tap")"
+          rm -rf "$tap"
+          ln -s "$GITHUB_WORKSPACE" "$tap"
+      - run: brew style shankar-sachin/tap
+      - run: brew install --verbose shankar-sachin/tap/askphysics
+      - run: brew test shankar-sachin/tap/askphysics
+      - run: askphysics ask "A ball is dropped from 20 m. How fast does it land?"
